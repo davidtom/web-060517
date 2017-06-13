@@ -1,3 +1,5 @@
+
+
 1. Describe what is happening in environment.
   what is each line doing?
   *A: bringing in the dependencies that we want/need to work with*
@@ -16,9 +18,17 @@
     AND the code in seed.rb)*
 
 3. Note that we have an artist class and a song class.  Describe the relationship between artists and songs.
+
   artist -> songs *A: Artists have songs*
   artist.songs *A: A list of the songs that the artist has sung*
   song.artist *A: The name of the artist who sang a song*
+
+
+  artist has_many songs songs
+  artist.songs
+  song.artist
+  song belongs to artist
+
 4. Build out the following
   - Artist.all
     -> should return all of the artists that have been initialized
@@ -46,3 +56,6 @@
       then, without doing anything else, if I call...
      touch_the_sky.artist -> kanye
      (it should return kanye)
+
+
+  Different example

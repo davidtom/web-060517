@@ -4,7 +4,6 @@ Artist.new('jay z')
 
 Song.new('homeward bound')
 Song.new('graceland')
-
 Song.new('stronger')
 Song.new('runaway')
 Song.new('run this town')
