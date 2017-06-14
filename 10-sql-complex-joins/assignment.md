@@ -75,3 +75,11 @@ id name       | hometown       |  year of birth
 3. Translate to excel
 
 https://docs.google.com/spreadsheets/d/1wraS2DQ50ONoWR1kVvhfj0QJiYgYSCAzaPhvaIyBDjk/edit?usp=sharing
+
+
+4. Answer the following questions
+
+A. Who are all of the customers that ordered an egg cream?
+B. Which customer brings in the most revenue
+C. Which bartender brings in the most revenue
+D. Which drink does the bar spend the most amount to produce?

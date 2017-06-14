@@ -1,4 +1,4 @@
-select customers.name from orders inner join customers on customers.id = orders.customer_id where drinks.id = 1
+
 
 
 
