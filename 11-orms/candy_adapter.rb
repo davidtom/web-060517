@@ -3,15 +3,34 @@ require 'pry'
 
 class Candy
   attr_accessor :name, :calories, :has_milk
+
+  #create class attribute db, which is sqlite3 database object
   def self.db
     @@db = SQLite3::Database.new("candy.db")
   end
 
 
   def insert
-    db.execute("INSERT INTO candies (name, calories, has_milk) VALUES ('snickers', 50, 1);")
+    #makre sure that self.has_milk is a 1 or 0, not true or false
+    has_milk_int = self.has_milk 1:0
+    #set up query to insert into table
+    query = "INSERT INTO candies (name, calories, has_milk) VALUES (?, ?, ?;"
+    #access Candy class (this is an instance method), and access the db (class attribute)
+    self.class.db.execute(query, [self.name, self.calories, self.has_milk])
   end
+
+  def self.find(id)
+
+
+  end
+
 end
+
+twix = Candy.new()
+twix.name = "twix"
+twix.calories = 100
+twix.has_milk = true
+
 
 Pry.start
 
