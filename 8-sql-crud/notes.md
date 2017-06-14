@@ -6,16 +6,12 @@ Labs
 
   select name as first_name  from  
 
-
-
 Outline
   1. why databases
     can't store data
     we have all that information
   2. modeling data
     candy
-
-
   3. working directly with sql
     1. have a ruby gem to work with sqlite3
     2. play around with our sql
