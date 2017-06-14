@@ -1,5 +1,15 @@
 require 'sqlite3'
-db = SQLite3::Database.new("candy.db")
+def db
+  @db ||= SQLite3::Database.new("candy.db")
+  # @db || @db = SQLite3::Database.new("candy.db")
+  # @sum += 1
+  # @sum = @sum + 1
+  # if @db
+  #   @db
+  # else
+  #  @db = SQLite3::Database.new("candy.db")
+  # end
+end
 #
 # db.execute()
 # create
@@ -32,5 +42,5 @@ end
   # destroy candy by the id
 
 def destroy(id)
-  
+
 end
