@@ -2,7 +2,7 @@ require 'sqlite3'
 require 'pry'
 
 class Candy
-  attr_accessor :name, :calories, :has_milk
+  attr_accessor :name, :calories, :has_milk, :id
 
   #create class attribute db, which is sqlite3 database object
   def self.db
@@ -19,8 +19,9 @@ class Candy
     self.class.db.execute(query, [self.name, self.calories, has_milk_int])
   end
 
-  def self.new_candy_from_find(row)
+  def self.new_candy_from_row(row)
     candy = Candy.new
+    candy.id = row[0]
     candy.name = row[1]
     candy.calories = row[2]
     # re-convert 1 or 0 into true or false
@@ -36,12 +37,12 @@ class Candy
     #select query returns an array of rows, each of which are an array, so we
     # need to access the first return value to get the first row (as an array)
     row = self.db.execute(query, [id]).first
-    self.new_candy_from_find(row)
+    self.new_candy_from_row(row)
   end
 
   def destroy
-    query = "DELETE FROM candies WHERE name = ?"
-    self.class.db.execute(query, [self.name])
+    query = "DELETE FROM candies WHERE id = ?"
+    self.class.db.execute(query, [self.id])
   end
 
   def self.all
@@ -50,7 +51,7 @@ class Candy
     rows = self.db.execute(query)
 
     #iterate over rows and create objects with each, adding them to an array
-    rows.each_with_object([]){|row, arr| arr << self.new_candy_from_find(row)}
+    rows.each_with_object([]){|row, arr| arr << self.new_candy_from_row(row)}
   end
 
   def self.update(id, name, calories, has_milk)
