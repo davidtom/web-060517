@@ -9,19 +9,70 @@ class Candy
     @@db = SQLite3::Database.new("candy.db")
   end
 
+  def self.columns
+    {
+      name: "TEXT",
+      calories: "INTEGER",
+      has_milk: "BOOLEAN"
+    }
+  end
+
+  def self.pluralize_class
+    self.to_s.downcase.chop + "ies"
+  end
+
+  def self.create_table
+    string = self.columns.map do |k, v|
+      "#{k} #{v}"
+    end.join(", ")
+    <<-SQL
+    CREATE TABLE #{self.pluralize_class} (id INTEGER PRIMARY KEY, #{string})
+    SQL
+  end
+
+  def self.column_names
+    self.columns.keys.map(&:to_s)
+  end
+
+  def attribute_values
+    Candy.column_names.map do |attribute|
+      self.send(attribute)
+    end
+  end
+
+  def attribute_values_for_sql
+    attribute_values.map do |attribute|
+      if attribute == true
+        1
+      elsif attribute == false
+        0
+      else
+        attribute
+      end
+    end
+  end
+
+  def question_marks
+    count = self.class.column_names.size
+    (["?"] * count).join(", ")
+  end
+
 
   def insert
     #makre sure that self.has_milk is a 1 or 0, not true or false
     has_milk_int = self.has_milk ? 1 : 0
     #set up query to insert into table
-    query = "INSERT INTO candies (name, calories, has_milk) VALUES (?, ?, ?);"
+    query = "INSERT INTO #{self.class.pluralize_class} (#{self.class.column_names.join(', ')}) VALUES (#{self.question_marks})"
     #access Candy class (this is an instance method), and access the db (class attribute)
-    self.class.db.execute(query, [self.name, self.calories, has_milk_int])
+    self.class.db.execute(query, *self.attribute_values)
   end
 
   def self.new_candy_from_row(row)
-    candy = Candy.new
-    candy.id = row[0]
+    obj = self.new
+    obj.id = row[0]
+    self.column_names.map.with_index do |column_name, idx|
+       obj.send("#{column_name}=", row[idx+1])
+    end
     candy.name = row[1]
     candy.calories = row[2]
     # re-convert 1 or 0 into true or false
