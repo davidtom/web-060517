@@ -83,3 +83,27 @@ A. Who are all of the customers that ordered an egg cream?
 B. Which customer brings in the most revenue
 C. Which bartender brings in the most revenue
 D. Which drink does the bar spend the most amount to produce?
+
+customer_id 1
+[
+  row
+  row
+
+]
+
+
+customer_id 2
+[
+  row
+  row
+  row
+]
+
+customer_id 3
+[
+  row
+  row
+]
+
+User.all
+User.find(3)

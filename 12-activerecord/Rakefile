@@ -1,0 +1,6 @@
+require 'sinatra/activerecord/rake'
+require_relative './environment.rb'
+
+task :console do 
+    Pry.start
+end
