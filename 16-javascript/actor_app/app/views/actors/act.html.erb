@@ -1,0 +1,33 @@
+hi mom!
+<%= link_to 'see em act', act_path %>
+<!-- <a href="<%= act_path %>"> hola</a> -->
+
+<form action="<%= actors_path %>" method="POST"> -->
+
+<%= form_tag actors_path do %>
+  <p> <%= label_tag "actor name"%>
+<!-- <label> Character Name </label> -->
+  <!-- <input type="text" name="characters[name]"> -->
+  <%= text_field_tag "actor[name]" %></p>
+  <p> <%= label_tag "actor hometown"%>
+  <%= text_field_tag "actor[hometown]" %></p>
+  <!-- <label> Actor Name </label>
+  <input type="text" name="characters[actor_name]">
+  <label> TV Show Name </label>
+  <input type="text" name="characters[show_name]"> -->
+  <%= submit_tag 'hola'%>
+<!--   <input type="submit"> -->
+
+<% end %>
+
+<!-- def text_field_tag(name_attribute)
+  "<input type="text" name="">
+end -->
+
+<!-- def label_tag(text)
+  "<label> </label>"
+end
+
+label_tag("actor name") -->
+
+<!-- text_field_tag("actors[name]")

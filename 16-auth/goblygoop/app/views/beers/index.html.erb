@@ -1,0 +1,12 @@
+<% if logged_in? %>
+  <p>Hi <%= current_user.name %>
+<% end %>
+
+<ul>
+  <% @beers.each do |b| %>
+  <li>
+    <a href="/beers/<%=b.id%>"><%= b.name %></a>
+    <%= link_to(b.name, beer_path(b)) %>
+  </li>
+  <% end %>
+</ul>

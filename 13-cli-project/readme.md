@@ -5,7 +5,7 @@
 
 ## Your task
 
-Your task is to build out hangman.  Users guess letters, and depending on the word, each letter is filled in.  Think about holding onto a user history, so that I can see the number of games a user has won or lost.  Build this out in pure ruby.  You can use the require_all gem, and the pry gem.  Do not use any sql.  
+Your task is to build out hangman.  Users guess letters, and depending on the word, each letter is filled in.  Think about how to model the program such that we could hold onto a user history, and see the number of games a user has won or lost.  Build this out in pure ruby.  You can use the require_all gem, and the pry gem.  Do not use any sql.  
 
 ## Setup
 

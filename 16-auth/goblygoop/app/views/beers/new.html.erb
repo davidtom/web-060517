@@ -1,0 +1,6 @@
+
+<%= form_for( @beer ) do |b| %>
+<%= b.text_field(:name, placeholder: "Enter Name") %>
+<%= b.text_field(:abv, placeholder: "Enter abv") %>
+<%= b.submit  %>
+<% end %>
