@@ -24,3 +24,4 @@ teacher.courses()
 
 // 1. Simply by creating new teachers will add to the store and add an id
 // 2. calling teacher.courses() returns a list of courses
+// 3. calling course.teacher() returns the teacher object
