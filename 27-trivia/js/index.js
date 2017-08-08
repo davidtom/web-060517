@@ -1,4 +1,4 @@
-let API_BASE_URL = 'https://opentdb.com/api.php?amount=10&type=boolean'
+let API_BASE_URL = 'https://opentdb.com/api.php?amount=10'
 
 let store = {games: [], questions: []}
 let game_id = 0
@@ -10,9 +10,13 @@ function render(template, selector) {
 }
 
 $(function() {
-  $('body').on('click', '#new-game', function(event) {
-    fetch(API_BASE_URL)
+  $('body').on('submit', 'form#game-selector', function(event) {
+    event.preventDefault()
+    let difficulty = `&difficulty=${event.currentTarget[0].value}`
+    let questionType = "&type=boolean"
+    fetch(API_BASE_URL+difficulty+questionType)
       .then(function(response) {
+        console.log(response)
         return response.json()
       })
       .then(function(data) {
